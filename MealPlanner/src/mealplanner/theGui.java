@@ -64,8 +64,6 @@ public class theGui extends javax.swing.JFrame {
         fridge = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         curFood = new javax.swing.JList();
-        jScrollPane15 = new javax.swing.JScrollPane();
-        foodFacts = new javax.swing.JTextPane();
         addF = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -73,6 +71,8 @@ public class theGui extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jScrollPane23 = new javax.swing.JScrollPane();
         foodlist1 = new javax.swing.JList();
+        jScrollPane24 = new javax.swing.JScrollPane();
+        foodFacts = new javax.swing.JList();
         shopList = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         foodneeded = new javax.swing.JList();
@@ -343,14 +343,12 @@ public class theGui extends javax.swing.JFrame {
             public Object getElementAt(int i) { return strings[i]; }
         });
         curFood.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        curFood.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                curFoodFocusGained(evt);
+        curFood.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                curFoodValueChanged(evt);
             }
         });
         jScrollPane12.setViewportView(curFood);
-
-        jScrollPane15.setViewportView(foodFacts);
 
         addF.setText("Add Food");
 
@@ -378,13 +376,22 @@ public class theGui extends javax.swing.JFrame {
         });
         jScrollPane23.setViewportView(foodlist1);
 
+        jScrollPane24.setViewportView(foodFacts);
+
         javax.swing.GroupLayout fridgeLayout = new javax.swing.GroupLayout(fridge);
         fridge.setLayout(fridgeLayout);
         fridgeLayout.setHorizontalGroup(
             fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fridgeLayout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(fridgeLayout.createSequentialGroup()
+                        .addComponent(jScrollPane23, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(removeF)
+                        .addContainerGap(146, Short.MAX_VALUE))
                     .addGroup(fridgeLayout.createSequentialGroup()
                         .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(fridgeLayout.createSequentialGroup()
@@ -393,18 +400,16 @@ public class theGui extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
                                 .addGap(44, 44, 44))
                             .addGroup(fridgeLayout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                                 .addGap(95, 95, 95)))
-                        .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane15)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(fridgeLayout.createSequentialGroup()
-                        .addComponent(jScrollPane23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeF)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                        .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fridgeLayout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fridgeLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         fridgeLayout.setVerticalGroup(
             fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,9 +420,9 @@ public class theGui extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                    .addComponent(jScrollPane15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane24)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel14)
                 .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fridgeLayout.createSequentialGroup()
@@ -428,7 +433,7 @@ public class theGui extends javax.swing.JFrame {
                         .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addF)
                             .addComponent(removeF))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         App.addTab("Fridge", fridge);
@@ -975,23 +980,7 @@ public class theGui extends javax.swing.JFrame {
     }//GEN-LAST:event_Saturday1ActionPerformed
 
 //Fridge page
-    private void curFoodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_curFoodFocusGained
-        // TODO add your handling code here:
-        System.out.println("HIIIIIIIIII");
-        int select = 0, n = 0;
-        String foodName = "", nutr = "";
-        
-        //grab selected food name's nutrition facts
-        select = curFood.getSelectedIndex();
-        
-        //query call foodName = curFood[select];
-        
-        //store query call in a nutr
-        nutr = "facts";
-        foodFacts.setText(nutr);
-        
-    }//GEN-LAST:event_curFoodFocusGained
-
+    /**/
 //fridge page
     private void foodlist1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foodlist1FocusGained
         // TODO add your handling code here:
@@ -1036,13 +1025,14 @@ public class theGui extends javax.swing.JFrame {
                 
                 break;
             case 1: //fridge
-                //store query call in a string array listDataF
-                food2 = 5;        //grab total number of foods and store them in food2
-                listDataF = new String[food2];
-                foodlist1.setListData(listDataF);   //food list for them to add to their fridge
-                
-                curFood.setListData(foodH);         //populate contents of the  fridge
-                
+                test = FoodList.allAvailableFood();
+                String names[] = test.foodListToString();
+                /*
+                for(int i = 0; i < names.length; i++){
+                System.out.println("item:" + names[i]);
+                }
+                */
+                curFood.setListData(names);
                 break;
             case 2: //shopping list
                 //compare fridge and recipe ingredients to populate foodneeded
@@ -1086,6 +1076,21 @@ public class theGui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AppStateChanged
 
+    private void curFoodValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_curFoodValueChanged
+        int size =  test.content.size();
+        if(size >0){
+            int index = curFood.getSelectedIndex();
+            String[] infoOnCurrentFood = new String[6];
+            infoOnCurrentFood[0] = "Food Group: " + test.content.get(index).getFoodGroup();
+            infoOnCurrentFood[1] = "Calories: " + test.content.get(index).getCalories();
+            infoOnCurrentFood[2] = "Sugar: " + test.content.get(index).getSugar();
+            infoOnCurrentFood[3] = "Protein: " + test.content.get(index).getProtein();
+            infoOnCurrentFood[4] = "Sodium: " + test.content.get(index).getSodium();
+            infoOnCurrentFood[5] = "Fat: " + test.content.get(index).getFat();
+            foodFacts.setListData(infoOnCurrentFood);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_curFoodValueChanged
+
     
     
     /**
@@ -1097,6 +1102,7 @@ public class theGui extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1115,14 +1121,15 @@ public class theGui extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /*Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new theGui().setVisible(true);
             }
         });
     }
-
+    
+    FoodList test;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane App;
     private javax.swing.JRadioButton Category;
@@ -1161,7 +1168,7 @@ public class theGui extends javax.swing.JFrame {
     private javax.swing.JPanel cookbook;
     private javax.swing.JList curFood;
     private javax.swing.JToggleButton dnd;
-    private javax.swing.JTextPane foodFacts;
+    private javax.swing.JList foodFacts;
     private javax.swing.JTextPane foodInfo;
     private javax.swing.JList foodlist1;
     private javax.swing.JList foodneeded;
@@ -1198,7 +1205,6 @@ public class theGui extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
@@ -1208,6 +1214,7 @@ public class theGui extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane23;
+    private javax.swing.JScrollPane jScrollPane24;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
