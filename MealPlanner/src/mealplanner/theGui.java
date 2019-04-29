@@ -69,7 +69,6 @@ public class theGui extends javax.swing.JFrame {
         addF = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        viewN = new javax.swing.JButton();
         removeF = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane23 = new javax.swing.JScrollPane();
@@ -361,13 +360,6 @@ public class theGui extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Nutrition Facts");
 
-        viewN.setText("View Nutrition");
-        viewN.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewNActionPerformed(evt);
-            }
-        });
-
         removeF.setText("Remove Food");
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -378,6 +370,11 @@ public class theGui extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        foodlist1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                foodlist1FocusGained(evt);
+            }
         });
         jScrollPane23.setViewportView(foodlist1);
 
@@ -398,11 +395,9 @@ public class theGui extends javax.swing.JFrame {
                             .addGroup(fridgeLayout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(95, 95, 95)))
-                        .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(viewN)
-                            .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane15)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane15)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(fridgeLayout.createSequentialGroup()
                         .addComponent(jScrollPane23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -423,9 +418,7 @@ public class theGui extends javax.swing.JFrame {
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                     .addComponent(jScrollPane15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewN)
-                    .addComponent(jLabel14))
+                .addComponent(jLabel14)
                 .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fridgeLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -435,7 +428,7 @@ public class theGui extends javax.swing.JFrame {
                         .addGroup(fridgeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addF)
                             .addComponent(removeF))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         App.addTab("Fridge", fridge);
@@ -704,7 +697,7 @@ public class theGui extends javax.swing.JFrame {
         jLabel1.setText("Recipies");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Ingredients");
+        jLabel2.setText("Current Ingredients");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Food");
@@ -887,7 +880,7 @@ public class theGui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(App, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addComponent(App)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(214, 214, 214)
@@ -909,6 +902,7 @@ public class theGui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+//Home Tab
     private void Sunday1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sunday1ActionPerformed
         // TODO add your handling code here:
         dayHome = "Sunday";
@@ -929,18 +923,20 @@ public class theGui extends javax.swing.JFrame {
             
             //set mealsB list with breakfast recipes from listDataR
             mealsB.setListData(listDataR);
-            select = mealsB.getSelectedIndex();
-            recipeName = listDataR[select];
+            if(mealsB.hasFocus()){
+                select = mealsB.getSelectedIndex();
+                recipeName = listDataR[select];
             
-            //grab recipe ingredients and store in listDataI
-            ing = 5;        //grab total number of ingredoents and store them in ing
-            listDataI = new String[ing];
-            
-            //clear ingredients text
-            ingredients.setText("");
-            //add list of the selected recipes to the ingredients pane
-            for(int i = 0; i < listDataI.length; i++){
-                ingredients.setText(ingredients.getText()+"/n"+listDataI[i]);
+                //grab recipe ingredients and store in listDataI
+                ing = 5;        //grab total number of ingredoents and store them in ing
+                listDataI = new String[ing];
+
+                //clear ingredients text
+                ingredients.setText("");
+                //add list of the selected recipes to the ingredients pane
+                for(int i = 0; i < listDataI.length; i++){
+                    ingredients.setText(ingredients.getText()+"/n"+listDataI[i]);
+                }
             }
         //set mealsL list with lunch recipes
         
@@ -948,7 +944,6 @@ public class theGui extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Sunday1ActionPerformed
 
-//Home Tab
     private void Monday1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Monday1ActionPerformed
         // TODO add your handling code here:
         dayHome = "Monday";
@@ -979,25 +974,36 @@ public class theGui extends javax.swing.JFrame {
         dayHome = "Saturday";
     }//GEN-LAST:event_Saturday1ActionPerformed
 
+//Fridge page
     private void curFoodFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_curFoodFocusGained
         // TODO add your handling code here:
+        System.out.println("HIIIIIIIIII");
+        int select = 0, n = 0;
+        String foodName = "", nutr = "";
         
+        //grab selected food name's nutrition facts
+        select = curFood.getSelectedIndex();
+        
+        //query call foodName = curFood[select];
+        
+        //store query call in a nutr
+        nutr = "facts";
+        foodFacts.setText(nutr);
         
     }//GEN-LAST:event_curFoodFocusGained
 
-    private void viewNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewNActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewNActionPerformed
-
-    //used for preloading each page when selected
+//used for preloading each page when selected
     private void AppFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AppFocusGained
         // TODO add your handling code here:
         
-        int select = 0, rec = 0, ffood = 0, food2 = 0;
+        int select = 0, rec = 0, ffood = 0, food2 = 0 , ing = 0, cat = 0;
         String foodName = "";
         String[] listDataF;     //string of food names from query
+        String[] listDataC;     //string of food names from query
         String[] listDataR;     //list of recipes
-        String[] foodN;
+        String[] listDataI;     //list of recipe ingredients
+        String[] foodN = {};    //food list for the shopping list page
+        String[] foodH = {};    //food in the fridge
         
         int page = App.getSelectedIndex();
         switch(page){
@@ -1029,8 +1035,9 @@ public class theGui extends javax.swing.JFrame {
                 //store query call in a string array listDataF
                 food2 = 5;        //grab total number of foods and store them in food2
                 listDataF = new String[food2];
-                foodlist1.setListData(listDataF);
+                foodlist1.setListData(listDataF);   //food list for them to add to their fridge
                 
+                curFood.setListData(foodH);         //populate contents of the  fridge
                 
                 break;
             case 2: //shopping list
@@ -1038,17 +1045,47 @@ public class theGui extends javax.swing.JFrame {
                 foodneeded.setListData(foodN);
                 break;
             case 3: // meal planning
+                // populate the weeks list column
                 
+                //populate recList
+                rec = 5;        //grab total number of recipes and store them in rec
+                listDataR = new String[rec];
+                recList.setListData(listDataR);
                 
                 break;
             case 4: //cookbook
+                //populate recList
+                rec = 5;        //grab total number of recipes and store them in rec
+                listDataR = new String[rec];
+                Rlist.setListData(listDataR);
                 
+                //populate Inlist
+                ing = 5;        //grab total number of recipe ingredients and store them in ing
+                listDataI = new String[ing];
+                Inlist.setListData(listDataI);
+                
+                //populate FList
+                ffood = 5;        //grab total number of Food and store them in rec
+                foodH = new String[ffood];
+                Flist.setListData(foodH);
+                //populate listingredient with food for add recicpe section
+                listingredient.setListData(foodH);
+                
+                //populate listCategory
+                cat = 5;        //grab total number of categories in the food section and store them in 
+                listDataC = new String[cat];
+                listCategory.setListData(listDataC);
                 
                 break;    
             default:
                 break;
         }
     }//GEN-LAST:event_AppFocusGained
+
+//fridge page
+    private void foodlist1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foodlist1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foodlist1FocusGained
 
     
     
@@ -1203,7 +1240,6 @@ public class theGui extends javax.swing.JFrame {
     private javax.swing.JList searchList2;
     private javax.swing.JPanel shopList;
     private javax.swing.JLabel title;
-    private javax.swing.JButton viewN;
     private javax.swing.JList weekList;
     // End of variables declaration//GEN-END:variables
 }

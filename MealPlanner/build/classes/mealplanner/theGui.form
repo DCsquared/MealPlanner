@@ -425,12 +425,9 @@
                                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="viewN" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jScrollPane15" max="32767" attributes="0"/>
-                                      <Component id="jLabel8" min="-2" pref="196" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jScrollPane15" max="32767" attributes="0"/>
+                                  <Component id="jLabel8" min="-2" pref="196" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -459,10 +456,7 @@
                           <Component id="jScrollPane15" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="viewN" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -476,7 +470,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -536,14 +530,6 @@
                 <Property name="text" type="java.lang.String" value="Nutrition Facts"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="viewN">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="View Nutrition"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewNActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="removeF">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove Food"/>
@@ -575,6 +561,9 @@
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="foodlist1FocusGained"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1279,7 +1268,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Ingredients"/>
+                <Property name="text" type="java.lang.String" value="Current Ingredients"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
