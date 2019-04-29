@@ -170,9 +170,9 @@ public class theGui extends javax.swing.JFrame {
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("My Meal Planner");
 
-        App.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                AppFocusGained(evt);
+        App.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                AppStateChanged(evt);
             }
         });
 
@@ -992,8 +992,12 @@ public class theGui extends javax.swing.JFrame {
         
     }//GEN-LAST:event_curFoodFocusGained
 
-//used for preloading each page when selected
-    private void AppFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AppFocusGained
+//fridge page
+    private void foodlist1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foodlist1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foodlist1FocusGained
+
+    private void AppStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_AppStateChanged
         // TODO add your handling code here:
         
         int select = 0, rec = 0, ffood = 0, food2 = 0 , ing = 0, cat = 0;
@@ -1080,12 +1084,7 @@ public class theGui extends javax.swing.JFrame {
             default:
                 break;
         }
-    }//GEN-LAST:event_AppFocusGained
-
-//fridge page
-    private void foodlist1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_foodlist1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_foodlist1FocusGained
+    }//GEN-LAST:event_AppStateChanged
 
     
     
