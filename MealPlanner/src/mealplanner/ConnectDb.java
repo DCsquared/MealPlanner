@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mealplanner;
+
+/* Program name: FoodList.java
+ * Author: David Cannon II, Danial Memon, Charlier Myre
+ * Purpose: Connect to the database
+ */
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author EKUStudent
  */
-public class ConnectDb {
+public class ConnectDB {
     public static Connection setupConnection()
     {
         String jdbcDriver = "oracle.jdbc.driver.OracleDriver";
