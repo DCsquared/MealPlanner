@@ -704,8 +704,6 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(mealPlanLayout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(removeR)
                                 .addGap(90, 90, 90))
                             .addGroup(mealPlanLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -716,16 +714,20 @@ public class GUI extends javax.swing.JFrame {
                                     .addGroup(mealPlanLayout.createSequentialGroup()
                                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(Wednesday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(Sunday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(Monday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(Tuesday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(Thursday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(Friday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(Saturday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Sunday)
-                                            .addComponent(Monday)
-                                            .addComponent(Tuesday)
-                                            .addComponent(Thursday)
-                                            .addComponent(Wednesday)
-                                            .addComponent(Friday)
-                                            .addComponent(Saturday))
-                                        .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(addR, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(mealPlanLayout.createSequentialGroup()
+                                                .addComponent(addR, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(117, 117, 117)
+                                                .addComponent(removeR))
                                             .addGroup(mealPlanLayout.createSequentialGroup()
                                                 .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -758,7 +760,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(SearchR)))
                         .addGap(9, 9, 9)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         mealPlanLayout.setVerticalGroup(
             mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -770,52 +772,53 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(Ingredients))
                     .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SearchR)
                     .addComponent(setWeekB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(l4))
+                .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(l4)
+                    .addComponent(jLabel4))
                 .addGap(19, 19, 19)
                 .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(mealPlanLayout.createSequentialGroup()
-                        .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(breakfast)
-                            .addComponent(Sunday))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mealPlanLayout.createSequentialGroup()
-                                .addComponent(Monday)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Tuesday)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(Wednesday)
-                                    .addComponent(lunch)))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mealPlanLayout.createSequentialGroup()
-                                .addComponent(Thursday)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Friday)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Saturday))
-                            .addGroup(mealPlanLayout.createSequentialGroup()
-                                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dnd)))
-                        .addGap(5, 5, 5)
-                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mealPlanLayout.createSequentialGroup()
+                            .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(breakfast)
+                                .addComponent(Sunday))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(mealPlanLayout.createSequentialGroup()
+                                    .addComponent(Monday)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Tuesday)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(Wednesday)
+                                        .addComponent(lunch)))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(mealPlanLayout.createSequentialGroup()
+                                    .addComponent(Thursday)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Friday)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Saturday))
+                                .addGroup(mealPlanLayout.createSequentialGroup()
+                                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dnd)))
+                            .addGap(5, 5, 5)
+                            .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(8, 8, 8)
-                .addComponent(addR)
-                .addGap(14, 14, 14)
-                .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addR)
                     .addComponent(removeR))
+                .addGap(14, 14, 14)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createWeekText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1697,7 +1700,7 @@ public class GUI extends javax.swing.JFrame {
             infoOnCurrentFood[3] = "Protein: " + notInFridge.content.get(index).getProtein();
             infoOnCurrentFood[4] = "Sodium: " + notInFridge.content.get(index).getSodium();
             infoOnCurrentFood[5] = "Fat: " + notInFridge.content.get(index).getFat();
-            foodinfo.setListData(infoOnCurrentFood);
+            foodFacts.setListData(infoOnCurrentFood);
         }
     }//GEN-LAST:event_foodlist1ValueChanged
 
@@ -1721,6 +1724,8 @@ public class GUI extends javax.swing.JFrame {
         foodlist1.setListData(notInFridge.foodListToString());
         inFridge = FoodList.fridgeFood();
         curFood.setListData(inFridge.foodListToString());
+        String[] blank = new String[0];
+        foodFacts.setListData(blank);
     }//GEN-LAST:event_removeFActionPerformed
 
     //addFActionPerformed is called when the Add Food button is performed
@@ -1736,6 +1741,8 @@ public class GUI extends javax.swing.JFrame {
         curFood.setListData(inFridge.foodListToString());
         notInFridge = FoodList.notInFridgeFood();
         foodlist1.setListData(notInFridge.foodListToString());
+        String[] blank = new String[0];
+        foodFacts.setListData(blank);
     }//GEN-LAST:event_addFActionPerformed
 
     private void curFoodValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_curFoodValueChanged
@@ -3000,9 +3007,9 @@ public class GUI extends javax.swing.JFrame {
         });
     }
     RecipeList allRecipe;
-    String[] categories = {"calzone", "pizza", "pasta", "sandwitch", "appetizers", "sides",
-                    "cereal", "pastry", "appetizers", "soups", "salads", "desserts",
-                    "breads", "main dishes - beef", "main dishes- pork", "main dishes - seafood"};
+    String[] categories = {"Calzone", "Pizza", "Pasta", "Sandwitch", "Appetizers", "Sides",
+                    "Cereal", "Pastry", "Appetizers", "Soups", "Salads", "Desserts",
+                    "Breads", "Main Dishes - Beef", "Main Dishes- Pork", "Main Dishes - Seafood"};
     FoodList inFridge, notInFridge, 
             shoppingListFood, inRecipe, notInRecipe, allFood;
     // Variables declaration - do not modify//GEN-BEGIN:variables
