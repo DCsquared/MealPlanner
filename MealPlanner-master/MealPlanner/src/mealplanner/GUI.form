@@ -130,7 +130,7 @@
                       <Component id="App" min="-2" pref="678" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -774,12 +774,7 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="addR" min="-2" pref="107" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                                                      <Component id="removeR" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                                               <Component id="breakfast" alignment="0" pref="133" max="32767" attributes="0"/>
@@ -794,6 +789,12 @@
                                                       </Group>
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Component id="jScrollPane8" min="-2" pref="282" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                                      <Component id="removeR" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                                                      <Component id="addR" min="-2" pref="107" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -898,8 +899,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addR" min="-2" max="-2" attributes="0"/>
-                          <Component id="removeR" min="-2" max="-2" attributes="0"/>
+                          <Component id="addR" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="removeR" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Component id="jLabel10" min="-2" pref="24" max="-2" attributes="0"/>

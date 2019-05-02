@@ -725,10 +725,6 @@ public class GUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(mealPlanLayout.createSequentialGroup()
-                                                .addComponent(addR, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(117, 117, 117)
-                                                .addComponent(removeR))
-                                            .addGroup(mealPlanLayout.createSequentialGroup()
                                                 .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(mealPlanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(breakfast, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
@@ -739,7 +735,12 @@ public class GUI extends javax.swing.JFrame {
                                                         .addComponent(jScrollPane16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                                         .addComponent(dnd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(mealPlanLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(removeR)
+                                                .addGap(120, 120, 120)
+                                                .addComponent(addR, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(mealPlanLayout.createSequentialGroup()
                                         .addComponent(createWeekText, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -1041,7 +1042,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(App, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1579,6 +1580,8 @@ public class GUI extends javax.swing.JFrame {
                 allRecipe = RecipeList.allAvailableRecipes();
                 Rlist.setListData(allRecipe.recipeListToString());
                 listCategory.setListData(categories);
+                String[] blank1 = new String[0];
+                searchList2.setListData(blank1);
                 break;    
             default:
                 break;
@@ -1648,6 +1651,10 @@ public class GUI extends javax.swing.JFrame {
         Rlist.setListData(allRecipe.recipeListToString());
         Flist.clearSelection();
         Inlist.clearSelection();
+        listCategory.clearSelection();
+        Instructions.setText("");
+        Rname.setText("Recipe Name");
+        
     }//GEN-LAST:event_AddRecipeActionPerformed
 
     private void InlistValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_InlistValueChanged
@@ -1907,86 +1914,100 @@ public class GUI extends javax.swing.JFrame {
     private void IngredientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngredientsActionPerformed
         // TODO add your handling code here:
         Category.setSelected(false);
-        conn = ConnectDB.setupConnection();
-        try 
-        {
-            int totalCat = 0;
-            String sqlStatement = "select count(distinct name) as total from Food";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
-            rs = (OracleResultSet) pst.executeQuery();
-            while (rs.next())
+        String[] blank = new String[0];
+        searchList.setListData(blank);
+        if(Ingredients.isSelected() == true){
+            conn = ConnectDB.setupConnection();
+            try 
             {
-                totalCat = rs.getInt("total");
-                
+                int totalCat = 0;
+                String sqlStatement = "select count(distinct name) as total from Food";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
+                rs = (OracleResultSet) pst.executeQuery();
+                while (rs.next())
+                {
+                    totalCat = rs.getInt("total");
 
+
+                }
+                String[] ingredientList = new String[totalCat];
+
+                String sqlStatement2 = "select distinct name from Food";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
+                rs = (OracleResultSet) pst.executeQuery();
+                int i = 0;
+                while (rs.next())
+                {
+                    ingredientList[i] = rs.getString("name");
+                    i++;
+
+                }
+                searchList.setListData(ingredientList);
             }
-            String[] categoryList = new String[totalCat];
-            
-            String sqlStatement2 = "select distinct name from Food";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
-            rs = (OracleResultSet) pst.executeQuery();
-            int i = 0;
-            while (rs.next())
+            catch (Exception e)
             {
-                categoryList[i] = rs.getString("name");
-                i++;
-
+                JOptionPane.showMessageDialog(null, e);
             }
-            searchList.setListData(categoryList);
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        finally
-        {
-            ConnectDB.close(rs);
-            ConnectDB.close(pst);
-            ConnectDB.close(conn);
+            finally
+            {
+                ConnectDB.close(rs);
+                ConnectDB.close(pst);
+                ConnectDB.close(conn);
+            }
+        } else{
+            searchList.setListData(blank);
+            recList.setListData(blank);
         }
     }//GEN-LAST:event_IngredientsActionPerformed
 
     private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
         // TODO add your handling code here:
         Ingredients.setSelected(false);
-        conn = ConnectDB.setupConnection();
-        try 
-        {
-            int totalCat = 0;
-            String sqlStatement = "select count(distinct category) as total from Recipes";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
-            rs = (OracleResultSet) pst.executeQuery();
-            while (rs.next())
+        String[] blank = new String[0];
+        searchList.setListData(blank);
+        if(Category.isSelected() == true){
+            conn = ConnectDB.setupConnection();
+            try 
             {
-                totalCat = rs.getInt("total");
-                
+                int totalCat = 0;
+                String sqlStatement = "select count(distinct category) as total from Recipes";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
+                rs = (OracleResultSet) pst.executeQuery();
+                while (rs.next())
+                {
+                    totalCat = rs.getInt("total");
 
+
+                }
+                String[] categoryList = new String[totalCat];
+
+                String sqlStatement2 = "select distinct category from Recipes";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
+                rs = (OracleResultSet) pst.executeQuery();
+                int i = 0;
+                while (rs.next())
+                {
+                    categoryList[i] = rs.getString("category");
+                    i++;
+
+                }
+
+
+                searchList.setListData(categoryList);
             }
-            String[] categoryList = new String[totalCat];
-            
-            String sqlStatement2 = "select distinct category from Recipes";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
-            rs = (OracleResultSet) pst.executeQuery();
-            int i = 0;
-            while (rs.next())
+            catch (Exception e)
             {
-                categoryList[i] = rs.getString("category");
-                i++;
-
+                JOptionPane.showMessageDialog(null, e);
             }
-
-
-            searchList.setListData(categoryList);
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        finally
-        {
-            ConnectDB.close(rs);
-            ConnectDB.close(pst);
-            ConnectDB.close(conn);
+            finally
+            {
+                ConnectDB.close(rs);
+                ConnectDB.close(pst);
+                ConnectDB.close(conn);
+            }
+        } else{
+            searchList.setListData(blank);
+            recList.setListData(blank);
         }
     }//GEN-LAST:event_CategoryActionPerformed
 
@@ -2516,87 +2537,108 @@ public class GUI extends javax.swing.JFrame {
 
     private void categoryCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryCActionPerformed
         // TODO add your handling code here:
+        String[] blank = new String[0];
+        Flist.setListData(blank);
+        Inlist.setListData(blank);
+        Rlist.clearSelection();
         ingredientC.setSelected(false);
-        conn = ConnectDB.setupConnection();
-        try 
-        {
-            int totalCat = 0;
-            String sqlStatement = "select count(distinct category) as total from Recipes";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
-            rs = (OracleResultSet) pst.executeQuery();
-            while (rs.next())
+        if(categoryC.isSelected() == true){
+            conn = ConnectDB.setupConnection();
+            try 
             {
-                totalCat = rs.getInt("total");
-                
+                int totalCat = 0;
+                String sqlStatement = "select count(distinct category) as total from Recipes";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
+                rs = (OracleResultSet) pst.executeQuery();
+                while (rs.next())
+                {
+                    totalCat = rs.getInt("total");
 
+
+                }
+                String[] categoryList = new String[totalCat];
+
+                String sqlStatement2 = "select distinct category from Recipes";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
+                rs = (OracleResultSet) pst.executeQuery();
+                int i = 0;
+                while (rs.next())
+                {
+                    categoryList[i] = rs.getString("category");
+                    i++;
+
+                }
+
+
+                searchList2.setListData(categoryList);
             }
-            String[] categoryList = new String[totalCat];
-            
-            String sqlStatement2 = "select distinct category from Recipes";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
-            rs = (OracleResultSet) pst.executeQuery();
-            int i = 0;
-            while (rs.next())
+            catch (Exception e)
             {
-                categoryList[i] = rs.getString("category");
-                i++;
-
+                JOptionPane.showMessageDialog(null, e);
             }
-
-
-            searchList2.setListData(categoryList);
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        finally
-        {
-            ConnectDB.close(rs);
-            ConnectDB.close(pst);
-            ConnectDB.close(conn);
+            finally
+            {
+                ConnectDB.close(rs);
+                ConnectDB.close(pst);
+                ConnectDB.close(conn);
+            }
+        } else{
+            allRecipe = RecipeList.allAvailableRecipes();
+            Rlist.setListData(allRecipe.recipeListToString());
+            searchList2.setListData(blank);
         }
     }//GEN-LAST:event_categoryCActionPerformed
 
     private void ingredientCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingredientCActionPerformed
         // TODO add your handling code here:
+        String[] blank = new String[0];
+        Flist.setListData(blank);
+        Inlist.setListData(blank);
+        Rlist.clearSelection();
+        searchList2.setListData(blank);
         categoryC.setSelected(false);
-        conn = ConnectDB.setupConnection();
-        try 
-        {
-            int totalCat = 0;
-            String sqlStatement = "select count(distinct name) as total from Food";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
-            rs = (OracleResultSet) pst.executeQuery();
-            while (rs.next())
+        if(ingredientC.isSelected() == true){
+            conn = ConnectDB.setupConnection();
+            try 
             {
-                totalCat = rs.getInt("total");
-                
+                int totalCat = 0;
+                String sqlStatement = "select count(distinct name) as total from Food";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
+                rs = (OracleResultSet) pst.executeQuery();
+                while (rs.next())
+                {
+                    totalCat = rs.getInt("total");
 
+
+                }
+                String[] ingredientList = new String[totalCat];
+
+                String sqlStatement2 = "select distinct name from Food";
+                pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
+                rs = (OracleResultSet) pst.executeQuery();
+                int i = 0;
+                while (rs.next())
+                {
+                    ingredientList[i] = rs.getString("name");
+                    i++;
+
+                }
+                searchList2.setListData(ingredientList);
             }
-            String[] categoryList = new String[totalCat];
-            
-            String sqlStatement2 = "select distinct name from Food";
-            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement2);
-            rs = (OracleResultSet) pst.executeQuery();
-            int i = 0;
-            while (rs.next())
+            catch (Exception e)
             {
-                categoryList[i] = rs.getString("name");
-                i++;
-
+                JOptionPane.showMessageDialog(null, e);
             }
-            searchList2.setListData(categoryList);
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        finally
-        {
-            ConnectDB.close(rs);
-            ConnectDB.close(pst);
-            ConnectDB.close(conn);
+            finally
+            {
+                ConnectDB.close(rs);
+                ConnectDB.close(pst);
+                ConnectDB.close(conn);
+            }
+        } else{
+            allRecipe = RecipeList.allAvailableRecipes();
+            Rlist.setListData(allRecipe.recipeListToString());
+            searchList2.setListData(blank);
         }
     }//GEN-LAST:event_ingredientCActionPerformed
 
@@ -2664,6 +2706,10 @@ public class GUI extends javax.swing.JFrame {
                 }
                 Rlist.setListData(recipeList);
             }
+            String[] blank = new String[0];
+            searchList2.setListData(blank);
+            Flist.setListData(blank);
+            Inlist.setListData(blank);
             
         }
         catch (Exception e)
@@ -2696,6 +2742,7 @@ public class GUI extends javax.swing.JFrame {
         mealsL1.clearSelection();
     }//GEN-LAST:event_mealsD1ValueChanged
 
+    
     public void breakfastReset()
     {
         String[] breakfastList;
