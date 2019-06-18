@@ -40,6 +40,7 @@ typOfMeal varchar2(20),
 iA number(3) primary key,
 constraint recipeFK foreign key (recipeID) references Recipes(id) on delete cascade,
 constraint planFK foreign key (dailyPlanID) references DailyPlan(id) on delete cascade
+
 );
 
 create table RecipeIngredient(
