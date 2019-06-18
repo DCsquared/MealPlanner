@@ -150,6 +150,3 @@ select * from Meal;
 select * from Food;
 select * from Week;
 select * from WeekPlan;
-
-
-
