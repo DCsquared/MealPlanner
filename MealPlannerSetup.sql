@@ -33,9 +33,13 @@ weekday varchar2(10)
 );
 
 -- does your best!
-jsdflknjsdflkjsdlkjdsgjlksdflkjsd
-sdfplkjsdf;psdjlkgdsp;lk'sdfplkjsdpoj
-dfpmjkdfgpjkodfgpjkfdgdfgpkojl
+create table Meal(
+recipeID number(3),
+dailyPlanID number(3),
+typeOfMeal varchar2(20),
+id number(3) primary key,
+constraint recipeFK foreign key (recipeID) references Recipes(id) on delete cascade,
+constraint planFK foreign key (dailyPlanID) references DailyPlan(id) on delete cascade
 );
 
 create table RecipeIngredient(
@@ -146,6 +150,3 @@ select * from Meal;
 select * from Food;
 select * from Week;
 select * from WeekPlan;
-
-
-
