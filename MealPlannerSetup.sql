@@ -34,10 +34,10 @@ weekday varchar2(10)
 
 -- does your best!
 create table Meal(
-recipeID number(3),
-dailyPlanID number(3),
-typeOfMeal varchar2(20),
-id number(3) primary key,
+recipID number(3),
+dailPlanID number(3),
+typOfMeal varchar2(20),
+iA number(3) primary key,
 constraint recipeFK foreign key (recipeID) references Recipes(id) on delete cascade,
 constraint planFK foreign key (dailyPlanID) references DailyPlan(id) on delete cascade
 );
